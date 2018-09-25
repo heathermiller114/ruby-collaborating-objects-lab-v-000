@@ -6,7 +6,7 @@ class Song
     @name = name
   end
   
-  def artist=(name)
+  def artist_name=(name)
     self.artist = Artist.find_or_create_by_name(name)
     artist.add_song(self)
   end
@@ -16,7 +16,8 @@ class Song
     song = song_parts[1]
     artist = song_parts[0]
     song_new = self.new(song)
-    song
+    song_new.artist_name = artist
+    song_new
   end
 
 end
